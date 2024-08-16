@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Tic Tac Toe</title>
+
+    <pre class="style">
+        <h1>
+        Have a break
+     Have a Tic Tac Toe!
+    </h1>
+      </pre>
+  </head>
+
+  <body>
+    <div class="container-button">
+      <button id="startGame">Start</button>
+      <button id="exit">Exit</button>
+    </div>
+
+    <div class="container">
+      <h2 class="WinTitle">How to win?</h2>
+      <div class="image-container">
+        <div class="image">
+          <img src="winningCondition.png" alt="Winning condition" />
+        </div>
+        <h2 class="TieTitle">How to meet tie?</h2>
+        <div class="image">
+          <img src="tieCondition.png" alt="Tie condition" />
+        </div>
+      </div>
+
+      <div class="popup-image" style="display: none;">
+        <span>&times;</span>
+        <img src="winningCondition.png" alt="">
+      </div>
+
+    <script>
+      var domain = document.getElementById('startGame');
+      domain.addEventListener('click', change_page);
+
+      function change_page() {
+        window.location.href = '/includes/TicTacToe/index.html'; // Updated path to point to the includes folder
+      }
+
+      var exitProgram = document.getElementById('exit');
+      exitProgram.addEventListener('click', exit_page);
+
+      function exit_page() {
+        alert('Exiting...'); //display exit signal
+        alert('Bye!'); //display bye signal
+      }
+
+
+
+      document.querySelectorAll('.image-container img').forEach(image => {
+        image.onclick = () => {
+          document.querySelector('.popup-image').style.display = 'block';
+          document.querySelector('.popup-image img').src = image.getAttribute('src');
+        };
+      });
+
+      document.querySelector('.popup-image span').onclick = () => {
+        document.querySelector('.popup-image').style.display = 'none';
+      };
+    </script>
+  </body>
+</html>
